@@ -3,4 +3,8 @@ public/dist
 
 yarn.lock
 
+package-lock.json
+
 .idea
+.nyc_output
+.vscode
