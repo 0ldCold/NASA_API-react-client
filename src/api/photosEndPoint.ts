@@ -7,8 +7,8 @@ export const getPhotosEndPoint = async (
   earth_date?: string,
   camera?: string,
   page?: number
-): Promise<AxiosResponse<PhotosApiData>> => {
-  return instance.get<PhotosApiData>(`${API_URL}/rovers/${roverName}/photos`, {
+): Promise<Photos> => {
+  const ApiResp = await instance.get<PhotosApiData>(`${API_URL}/rovers/${roverName}/photos`, {
     params: {
       earth_date,
       sol,
@@ -16,32 +16,26 @@ export const getPhotosEndPoint = async (
       page
     }
   });
+  return ApiResp.data.photos;
 };
-// , {
-//   params: {
-//     earth_date,
-//     camera,
-//     page
-//   }
-// }
 
 export interface PhotosApiData {
-  photos: Photos[];
+  photos: Photos;
 }
 
 export interface Photos {
-  id: number;
-  sol: number;
-  camera: {
+  [index: number]: {
     id: number;
-    name: string;
-    rover_id: number;
-    full_name: string;
-  };
-  img_src: string;
-  earth_date: string;
-  rover: {
-    [index: number]: {
+    sol: number;
+    camera: {
+      id: number;
+      name: string;
+      rover_id: number;
+      full_name: string;
+    };
+    img_src: string;
+    earth_date: string;
+    rover: {
       id: number;
       name: string;
       landing_date: string;
