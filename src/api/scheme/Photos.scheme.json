@@ -39,27 +39,26 @@
             "type": "string"
           },
           "rover": {
-
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "number"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "landing_date": {
-                  "type": "string"
-                },
-                "launch_date": {
-                  "type": "string"
-                },
-                "status": {
-                  "type": "string"
-                }
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number"
               },
-              "required": ["id", "name", "landing_date", "launch_date", "status"],
-              "additionalProperties": false
+              "name": {
+                "type": "string"
+              },
+              "landing_date": {
+                "type": "string"
+              },
+              "launch_date": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              }
+            },
+            "required": ["id", "name", "landing_date", "launch_date", "status"],
+            "additionalProperties": false
           }
         },
         "required": ["id", "sol", "camera", "img_src", "earth_date", "rover"],
