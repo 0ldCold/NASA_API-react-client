@@ -43,4 +43,5 @@ export interface Photos {
       status: string;
     };
   };
+  length: number;
 }
