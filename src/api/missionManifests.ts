@@ -1,4 +1,4 @@
-import { AxiosResponse } from "axios";
+import Manifest from "src/entities/Manifest";
 import { instance, API_URL } from "./instance";
 
 export const getManifest = async (roverName: string): Promise<Manifest> => {
@@ -8,24 +8,4 @@ export const getManifest = async (roverName: string): Promise<Manifest> => {
 
 export interface MissionApiData {
   photo_manifest: Manifest;
-}
-
-export interface Manifest {
-  name: string;
-  landing_date: string;
-  launch_date: string;
-  status: string;
-  max_sol: number;
-  max_date: string;
-  total_photos: number;
-  photos: {
-    [index: number]: {
-      sol: number;
-      earth_date: string;
-      total_photos: number;
-      cameras: {
-        [index: number]: string;
-      };
-    };
-  };
 }

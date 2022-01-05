@@ -1,7 +1,8 @@
+import RandomPhoto from "components/RandomPhoto/randomPhoto";
 import React from "react";
 
 const Main: React.FC = () => {
-  return <>Main page</>;
+  return <RandomPhoto />;
 };
 
 export default Main;

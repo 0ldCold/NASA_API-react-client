@@ -5,9 +5,8 @@ const Main = React.lazy(
   () => import(/* webpackChunkName: "Main", webpackPrefetch: true */ "scene/Main/Main")
 );
 
-const Secondary = React.lazy(
-  () =>
-    import(/* webpackChunkName: "Secondary", webpackPrefetch: true */ "scene/Secondary/Secondary")
+const Manifest = React.lazy(
+  () => import(/* webpackChunkName: "Main", webpackPrefetch: true */ "scene/Manifest/ManifestPage")
 );
 
 const NotFound = React.lazy(
@@ -21,7 +20,7 @@ const Routes: React.FC = (): React.ReactElement => {
       <Switch>
         <Route exact path='/' component={Main} />
         <Route exact path='/main' component={Main} />
-        <Route exact path='/secondary' component={Secondary} />
+        <Route exact path='/manifest' component={Manifest} />
         <Route component={NotFound} />
       </Switch>
     </Suspense>
