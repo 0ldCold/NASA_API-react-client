@@ -1,4 +1,4 @@
-import Photos from "src/entities/Photos";
+import Photos from "entities/Photos";
 import { instance, API_URL } from "./instance";
 
 export const getPhotosEndPoint = async (

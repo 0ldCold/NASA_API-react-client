@@ -1,4 +1,4 @@
-import RandomPhoto from "components/RandomPhoto/randomPhoto";
+import RandomPhoto from "components/custom/RandomPhoto/randomPhoto";
 import React from "react";
 
 const Main: React.FC = () => {

@@ -23,7 +23,7 @@ export const loadState = (): RootState | undefined => {
   }
 };
 
-export const saveState = (state): void => {
+export const saveState = (state: { app: AppInitialStateType }): void => {
   try {
     const serializedState = JSON.stringify(state);
     localStorage.setItem("state", serializedState);

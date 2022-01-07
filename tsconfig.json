@@ -20,11 +20,14 @@
     "baseUrl": ".",
     "paths": {
       "components/*": ["src/components/*"],
-      "reducers/*": ["src/store/reducers/*"],
-      "store/*": ["src/store/*"],
-      "image/*": ["src/image/*"],
+      "reducers/*": ["src/utils/store/reducers/*"],
+      "store/*": ["src/utils/store/*"],
+      "image/*": ["assets/image/*"],
       "scene/*": ["src/scene/*"],
-      "api/*": ["src/api/*"]
+      "api/*": ["src/utils/api/*"],
+      "utils/*": ["src/utils/*"],
+      "entities/*": ["src/entities/*"],
+      "styles/*": ["src/styles/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", "./custom.d.ts"],

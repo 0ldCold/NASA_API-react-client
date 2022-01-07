@@ -11,7 +11,9 @@ const Manifest = React.lazy(
 
 const NotFound = React.lazy(
   () =>
-    import(/* webpackChunkName: "NotFound", webpackPrefetch: true */ "components/NotFound/NotFound")
+    import(
+      /* webpackChunkName: "NotFound", webpackPrefetch: true */ "components/base/NotFound/NotFound"
+    )
 );
 
 const Routes: React.FC = (): React.ReactElement => {

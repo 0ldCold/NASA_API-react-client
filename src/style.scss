@@ -1,8 +1,12 @@
-@import "components/ModalProvider/modal.scss";
-@import "components/NotFound/notFound.scss";
-@import "components/ManifestInfo/manifestInfo.scss";
-@import "scene/Main/main.scss";
-@import "reset.scss";
+@import "styles/reset.scss";
+
+@import "styles/components/base/modal.scss";
+@import "styles/components/base/notFound.scss";
+
+@import "styles/components/custom/manifestInfo.scss";
+@import "styles/components/custom/roverSelector.scss";
+
+@import "styles/scene/main.scss";
 
 body {
   margin: 0;
