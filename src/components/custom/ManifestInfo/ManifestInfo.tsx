@@ -1,50 +1,46 @@
-import React, { useEffect, useState, FC } from "react";
+import React, { FC } from "react";
 
-import { getManifest } from "api/missionManifests";
-import { Manifest, getEmptyManifest } from "src/entities/Manifest";
-import RoverSelector from "components/custom/RoverSelector/roverSelector";
-import RoversName from "src/entities/RoversName";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
 
-const ManifestInfo: FC = () => {
-  const [rover, setRover] = useState<string>("Curiosity");
-  const [manifest, setManifest] = useState<Manifest>(getEmptyManifest());
+import Manifest from "entities/Manifest";
 
-  useEffect(() => {
-    getManifest(rover).then((apiResp) => {
-      setManifest(apiResp);
-    });
-  }, [rover]);
-
-  function setRoverInComponent(param: string): void {
-    setRover(param);
-  }
-
+const GridItem: FC<{ text: string; value: string }> = ({ text, value }) => {
   return (
-    <div className='center'>
-      <RoverSelector onSelect={setRoverInComponent} options={RoversName} />
-      <div className='manifest'>
-        <label>Name of the Rover:</label>
-        <input type='text' value={manifest.name} disabled />
+    <>
+      <Grid item xs={8}>
+        <Typography variant='h5' align='left' color='text.secondary' paragraph>
+          {text}
+        </Typography>
+      </Grid>
+      <Grid item xs={4}>
+        <Typography variant='h5' align='left' color='text.secondary' paragraph>
+          {value}
+        </Typography>
+      </Grid>
+    </>
+  );
+};
 
-        <label>The Rover&apos;s launch date from Earth:</label>
-        <input type='text' value={manifest.launch_date} disabled />
-
-        <label>The Rover&apos;s landing date on Mars:</label>
-        <input type='text' value={manifest.landing_date} disabled />
-
-        <label>The Rover&apos;s mission status:</label>
-        <input type='text' value={manifest.status} disabled />
-
-        <label>The most recent Martian sol from which photos exist:</label>
-        <input type='text' value={manifest.max_sol} disabled />
-
-        <label>The most recent Earth date from which photos exist:</label>
-        <input type='text' value={manifest.max_date} disabled />
-
-        <label>Number of photos taken by that Rover:</label>
-        <input type='text' value={manifest.photos.length} disabled />
-      </div>
-    </div>
+const ManifestInfo: FC<{ roverManifest: Manifest }> = ({ roverManifest }) => {
+  return (
+    <Grid container columnSpacing={1} rowSpacing={1}>
+      <GridItem text="The Rover's launch date from Earth:" value={roverManifest.launch_date} />
+      <GridItem text="The Rover's landing date on Mars:" value={roverManifest.landing_date} />
+      <GridItem text="The Rover's mission status:" value={roverManifest.status} />
+      <GridItem
+        text='The most recent Martian sol from which photos exist:'
+        value={roverManifest.max_sol.toString()}
+      />
+      <GridItem
+        text='The most recent Earth date from which photos exist:'
+        value={roverManifest.max_date}
+      />
+      <GridItem
+        text='Number of photos taken by that Rover:'
+        value={roverManifest.photos.length.toString()}
+      />
+    </Grid>
   );
 };
 
