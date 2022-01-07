@@ -11,3 +11,14 @@ export function getRandomInt(min: number, max: number): number {
   const RoundedMax = Math.floor(max);
   return Math.floor(Math.random() * (RoundedMax - RoundedMin + 1)) + RoundedMin;
 }
+
+export function getArrayOfRandomUniqueInt(min: number, max: number, length: number): number[] {
+  const arr: number[] = [];
+  while (arr.length < length) {
+    const randomInt = getRandomInt(min, max);
+    if (arr.indexOf(randomInt) === -1) {
+      arr.push(randomInt);
+    }
+  }
+  return arr;
+}
