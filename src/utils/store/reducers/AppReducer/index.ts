@@ -1,5 +1,5 @@
 import { AppActionTypes } from "store/actions/app/types";
-import { SET_MODAL } from "../../constants/app";
+import { SET_MODAL } from "store/constants/app";
 import { AppInitialStateType } from "./types";
 
 const initialState: AppInitialStateType = {

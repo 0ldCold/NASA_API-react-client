@@ -1,4 +1,4 @@
-import Manifest from "src/entities/Manifest";
+import Manifest from "entities/Manifest";
 import { instance, API_URL } from "./instance";
 
 export const getManifest = async (roverName: string): Promise<Manifest> => {

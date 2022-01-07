@@ -1,5 +1,5 @@
 import { getPhotosEndPoint } from "api/photosEndPoint";
-import RoverSelector from "components/RoverSelector/roverSelector";
+import RoverSelector from "components/custom/RoverSelector/roverSelector";
 import React, { useState } from "react";
 import RoversName from "src/entities/RoversName";
 import { getRandomInt } from "utils/utils";
@@ -25,7 +25,6 @@ const RandomPhoto: React.FC = () => {
   return (
     <div className='center'>
       <RoverSelector onSelect={setRoverInComponent} options={RoversName} />
-      <br />
       <button type='button' onClick={handleButton}>
         Random image
       </button>

@@ -2,7 +2,7 @@ import React, { useEffect, useState, FC } from "react";
 
 import { getManifest } from "api/missionManifests";
 import { Manifest, getEmptyManifest } from "src/entities/Manifest";
-import RoverSelector from "components/RoverSelector/roverSelector";
+import RoverSelector from "components/custom/RoverSelector/roverSelector";
 import RoversName from "src/entities/RoversName";
 
 const ManifestInfo: FC = () => {
@@ -22,7 +22,6 @@ const ManifestInfo: FC = () => {
   return (
     <div className='center'>
       <RoverSelector onSelect={setRoverInComponent} options={RoversName} />
-      <br />
       <div className='manifest'>
         <label>Name of the Rover:</label>
         <input type='text' value={manifest.name} disabled />

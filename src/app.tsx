@@ -1,9 +1,9 @@
 import React from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import ModalProvider from "./components/ModalProvider/ModalProvider";
-import AppContainer from "./providers/AppContainer";
-import store from "./store";
+import ModalProvider from "components/base/ModalProvider/ModalProvider";
+import AppContainer from "components/providers/AppContainer";
+import store from "utils/store";
 
 const App = (): React.ReactElement => {
   return (

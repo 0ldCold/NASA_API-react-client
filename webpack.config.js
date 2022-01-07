@@ -24,11 +24,12 @@ module.exports = {
     alias: {
       src: path.resolve(__dirname, "src/"),
       components: path.resolve(__dirname, "src/components/"),
-      store: path.resolve(__dirname, "src/store/"),
+      store: path.resolve(__dirname, "src/utils/store/"),
       scene: path.resolve(__dirname, "src/scene/"),
-      image: path.resolve(__dirname, "src/image/"),
-      api: path.resolve(__dirname, "src/api/"),
-      utils: path.resolve(__dirname, "src/utils/")
+      image: path.resolve(__dirname, "assets/image/"),
+      api: path.resolve(__dirname, "src/utils/api/"),
+      utils: path.resolve(__dirname, "src/utils/"),
+      entities: path.resolve(__dirname, "src/entities/")
     },
     extensions: [".ts", ".tsx", ".js"]
   },
@@ -86,7 +87,7 @@ module.exports = {
             options: {
               sourceMap: true,
               implementation: require("sass"),
-              prependData: `@import "./src/Variables.scss";` // For scss modules
+              prependData: `@import "./src/styles/Variables.scss";` // For scss modules
             }
           }
         ]
@@ -158,7 +159,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "public", "index.html"),
-      favicon: "./src/image/fav.png"
+      favicon: "./assets/image/fav.png"
     }),
     new MiniCssExtractPlugin({
       filename: "[name]-[contenthash].css",
