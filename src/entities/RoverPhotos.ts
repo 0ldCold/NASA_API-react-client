@@ -1,4 +1,4 @@
-export interface Photos {
+interface RoverPhotos {
   [index: number]: {
     id: number;
     sol: number;
@@ -21,4 +21,4 @@ export interface Photos {
   length: number;
 }
 
-export default Photos;
+export default RoverPhotos;
