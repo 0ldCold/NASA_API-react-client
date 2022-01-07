@@ -27,7 +27,8 @@ module.exports = {
       store: path.resolve(__dirname, "src/store/"),
       scene: path.resolve(__dirname, "src/scene/"),
       image: path.resolve(__dirname, "src/image/"),
-      api: path.resolve(__dirname, "src/api/")
+      api: path.resolve(__dirname, "src/api/"),
+      utils: path.resolve(__dirname, "src/utils/")
     },
     extensions: [".ts", ".tsx", ".js"]
   },
