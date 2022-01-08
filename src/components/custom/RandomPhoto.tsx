@@ -5,7 +5,6 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { LazyLoadComponent } from "react-lazy-load-image-component";
 
 import { getPhotosEndPoint } from "api/photosEndPoint";
 import Manifest from "entities/Manifest";
@@ -13,7 +12,6 @@ import React, { useState, useEffect, useCallback } from "react";
 import { getRandomInt, getArrayOfRandomUniqueInt } from "utils/utils";
 import Photo from "entities/Photo";
 import RoverPhotos from "entities/RoverPhotos";
-import NiceLoadingImage from "./NiceLoadingImage";
 
 const RandomPhoto: React.FC<{ roverManifest: Manifest }> = ({ roverManifest }) => {
   const photosQuantity = 9;
