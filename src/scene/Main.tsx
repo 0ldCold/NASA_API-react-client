@@ -1,13 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import AppBar from "@mui/material/AppBar";
-import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import CssBaseline from "@mui/material/CssBaseline";
-import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -16,20 +10,19 @@ import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-import Photo from "entities/Photo";
 import Manifest, { getEmptyManifest } from "entities/Manifest";
-import RoverSelector from "components/custom/RoverSelector/roverSelector";
+import RoverSelector from "components/custom/RoverSelector";
 import RoversName from "entities/RoversName";
 import { getManifest } from "api/missionManifests";
-import ManifestInfo from "components/custom/ManifestInfo/ManifestInfo";
-import RandomPhoto from "components/custom/RandomPhoto/randomPhoto";
+import ManifestInfo from "components/custom/ManifestInfo";
+import RandomPhoto from "components/custom/RandomPhoto";
 
 function Copyright() {
   return (
     <Typography variant='body2' color='text.secondary' align='center'>
       {"Copyright © "}
       <Link color='inherit' href='https://mui.com/'>
-        Your Website
+        Material-UI
       </Link>{" "}
       {new Date().getFullYear()}.
     </Typography>
