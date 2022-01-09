@@ -12,7 +12,21 @@ export function getRandomInt(min: number, max: number): number {
   return Math.floor(Math.random() * (RoundedMax - RoundedMin + 1)) + RoundedMin;
 }
 
+/**
+ * Генерация массива случайных уникальных элементов заданной длинны.
+ * Элементы задаются в заданном диапазоне
+ * @param min Нижний предел диапазона
+ * @param max Верхний предел диапазона
+ * @param length Длинна выходного массива
+ * @returns Массив уникальных случайных элементов
+ */
 export function getArrayOfRandomUniqueInt(min: number, max: number, length: number): number[] {
+  if (max - min + 1 < length) {
+    throw new Error(
+      `Unable to generate an array of unique random numbers ` +
+        `of the given length (${length}) for the given range (${min}-${max}).`
+    );
+  }
   const arr: number[] = [];
   while (arr.length < length) {
     const randomInt = getRandomInt(min, max);

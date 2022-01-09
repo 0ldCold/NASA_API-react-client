@@ -5,10 +5,11 @@ import Routes from "src/routing/Routes";
 
 const AppContainer = (): React.ReactElement => {
   instance.interceptors.request.use((config) => {
+    const modConfig = config;
     if (store.getState().app.baseURL) {
-      config.baseURL = `${store.getState().app.baseURL}/api/`;
+      modConfig.baseURL = `${store.getState().app.baseURL}/api/`;
     }
-    return config;
+    return modConfig;
   });
 
   return (

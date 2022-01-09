@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import { Route, Switch } from "react-router-dom";
 
 const Main = React.lazy(
-  () => import(/* webpackChunkName: "Main", webpackPrefetch: true */ "scene/Main/Main")
+  () => import(/* webpackChunkName: "Main", webpackPrefetch: true */ "scene/Main")
 );
 
 const NotFound = React.lazy(

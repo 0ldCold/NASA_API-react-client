@@ -11,20 +11,22 @@ import Manifest from "entities/Manifest";
 import React, { useState, useEffect, useCallback } from "react";
 import { getRandomInt, getArrayOfRandomUniqueInt } from "utils/utils";
 import Photo from "entities/Photo";
+import RoverPhotos from "entities/RoverPhotos";
 
 const RandomPhoto: React.FC<{ roverManifest: Manifest }> = ({ roverManifest }) => {
   const photosQuantity = 9;
   const [photos, setPhotos] = useState<Photo[]>([]);
 
   const getRandomPhoto = async (manifest: Manifest): Promise<Photo[]> => {
-    let randomSol = getRandomInt(1, manifest.max_sol);
-    let apiResp = await getPhotosEndPoint(manifest.name, randomSol);
-
-    while (apiResp.length < 9) {
-      randomSol = getRandomInt(1, manifest.max_sol);
+    // Если фотографий в указанный марсианский день (Sol) меньше 9, то ищем по другому марсианскому дню
+    // Повторяется пока не найдет нужный Sol
+    // Но такое случается редко и зачастую данный цикл проходит только 1 раз
+    let apiResp: RoverPhotos;
+    do {
+      const randomSol = getRandomInt(1, manifest.max_sol);
       // eslint-disable-next-line no-await-in-loop
       apiResp = await getPhotosEndPoint(manifest.name, randomSol);
-    }
+    } while (apiResp.length < 9);
     const randUniqInts = getArrayOfRandomUniqueInt(0, apiResp.length - 1, photosQuantity);
     const photosSrc: Photo[] = [];
     randUniqInts.forEach((randomInt: number, index: number) => {
