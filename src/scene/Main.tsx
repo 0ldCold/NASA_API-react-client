@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import AppBar from "@mui/material/AppBar";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -10,12 +10,14 @@ import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-import Manifest, { getEmptyManifest } from "entities/Manifest";
 import RoverSelector from "components/custom/RoverSelector";
-import RoversName from "entities/RoversName";
+import RoverNames from "entities/RoverNames";
 import { getManifest } from "api/missionManifests";
 import ManifestInfo from "components/custom/ManifestInfo";
 import RandomPhoto from "components/custom/RandomPhoto";
+import store from "store/index";
+import { useAppSelector } from "utils/hooks/useAppSelector";
+import manifestSetAction from "store/actions/manifest";
 
 function Copyright() {
   return (
@@ -48,12 +50,12 @@ const theme = createTheme({
 });
 
 const Main: React.FC = () => {
-  const [roverManifest, setRoverManifest] = useState<Manifest>(getEmptyManifest());
   const handleSelector = (roverName: string) => {
     getManifest(roverName).then((apiResp) => {
-      setRoverManifest(apiResp);
+      store.dispatch(manifestSetAction(apiResp));
     });
   };
+  const manifest = useAppSelector((state) => state.manifest);
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -81,11 +83,11 @@ const Main: React.FC = () => {
               color='text.primary'
               gutterBottom
             >
-              {roverManifest.name}
+              {manifest.name}
             </Typography>
-            <ManifestInfo roverManifest={roverManifest} />
+            <ManifestInfo roverManifest={manifest} />
             <Stack sx={{ pt: 4 }} direction='row' spacing={2} justifyContent='center'>
-              <RoverSelector options={RoversName} onSelect={handleSelector} />
+              <RoverSelector options={RoverNames} onSelect={handleSelector} />
             </Stack>
           </Container>
         </Box>
@@ -97,7 +99,7 @@ const Main: React.FC = () => {
             maxWidth='md'
           >
             {/* End hero unit */}
-            <RandomPhoto roverManifest={roverManifest} />
+            <RandomPhoto roverManifest={store.getState().manifest} />
           </Container>
         </Box>
       </main>

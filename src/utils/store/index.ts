@@ -1,4 +1,6 @@
+import Manifest from "entities/Manifest";
 import { AppInitialStateType } from "reducers/AppReducer/types";
+import ManifestReducer from "reducers/ManifestReducer";
 import { Action, applyMiddleware, combineReducers, createStore } from "redux";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
@@ -6,8 +8,13 @@ import thunkMiddleware, { ThunkAction } from "redux-thunk";
 import AppReducer from "./reducers/AppReducer";
 
 const allReducers = combineReducers({
-  app: AppReducer
+  app: AppReducer,
+  manifest: ManifestReducer
 });
+export interface RootState {
+  app: AppInitialStateType;
+  manifest: Manifest;
+}
 
 export const loadState = (): RootState | undefined => {
   try {
@@ -43,10 +50,6 @@ store.subscribe(() => {
     app: store.getState().app
   });
 });
-
-export interface RootState {
-  app: AppInitialStateType;
-}
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, Action<any>>;

@@ -1,12 +1,11 @@
-import * as _chai from "chai";
 import chai, { expect } from "chai";
 
 import jsonSchema from "chai-json-schema";
-import { getPhotosEndPoint } from "../src/api/photosEndPoint";
-import { getManifest } from "../src/api/missionManifests";
+import { getPhotosEndPoint } from "api/photosEndPoint";
+import { getManifest } from "api/missionManifests";
 
-import manifestScheme from "../src/api/scheme/Manifest.scheme.json";
-import photosScheme from "../src/api/scheme/Photos.scheme.json";
+import manifestScheme from "api/scheme/Manifest.scheme.json";
+import photosScheme from "api/scheme/Photos.scheme.json";
 
 chai.use(jsonSchema);
 
