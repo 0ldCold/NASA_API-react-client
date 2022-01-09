@@ -1,0 +1,20 @@
+"use strict";
+self["webpackHotUpdateproject"]("main",{},
+/******/ function(__webpack_require__) { // webpackRuntimeModules
+/******/ /* webpack/runtime/get javascript chunk filename */
+/******/ (() => {
+/******/ 	// This function allow to reference async chunks
+/******/ 	__webpack_require__.u = (chunkId) => {
+/******/ 		// return url for filenames based on template
+/******/ 		return "" + chunkId + "-" + {"src_scene_Main_Main_tsx":"9b9c67c048c63fa4931b","src_scene_Secondary_Secondary_tsx":"d91f87766839b868b0f0","src_components_NotFound_NotFound_tsx":"330eaa02348ecd54179d"}[chunkId] + ".js";
+/******/ 	};
+/******/ })();
+/******/ 
+/******/ /* webpack/runtime/getFullHash */
+/******/ (() => {
+/******/ 	__webpack_require__.h = () => ("c25920d639252e35cb3c")
+/******/ })();
+/******/ 
+/******/ }
+);
+//# sourceMappingURL=main.b63c89629d58b2f9f699.hot-update.js.map
