@@ -55,18 +55,8 @@ const Main: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const handleSelector = (roverName: string) => {
-    getManifest(roverName).then((apiResp) => {
-      dispatch(manifestSetAction(apiResp));
-    });
+    dispatch(manifestSetAction(roverName));
   };
-
-  const firstUpdate = useRef(true);
-  useEffect(() => {
-    if (firstUpdate.current) {
-      firstUpdate.current = false;
-      handleSelector(RoverNames[0]);
-    }
-  });
 
   return (
     <ThemeProvider theme={theme}>
@@ -111,7 +101,7 @@ const Main: React.FC = () => {
             maxWidth='md'
           >
             {/* End hero unit */}
-            <RandomPhoto roverManifest={store.getState().manifest} />
+            <RandomPhoto roverManifest={manifest} />
           </Container>
         </Box>
       </main>
