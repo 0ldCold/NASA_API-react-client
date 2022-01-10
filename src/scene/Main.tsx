@@ -55,8 +55,18 @@ const Main: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const handleSelector = (roverName: string) => {
-    dispatch(manifestSetAction(roverName));
+    getManifest(roverName).then((apiResp) => {
+      dispatch(manifestSetAction(apiResp));
+    });
   };
+
+  const firstUpdate = useRef(true);
+  useEffect(() => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      handleSelector(RoverNames[0]);
+    }
+  });
 
   return (
     <ThemeProvider theme={theme}>
