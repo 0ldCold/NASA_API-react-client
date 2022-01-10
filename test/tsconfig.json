@@ -10,18 +10,7 @@
     "noImplicitAny": false,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "typeRoots": ["../node_modules/@types"],
-    "paths": {
-      "components/*": ["../src/components/*"],
-      "reducers/*": ["../src/utils/store/reducers/*"],
-      "store/*": ["../src/utils/store/*"],
-      "image/*": ["../assets/image/*"],
-      "scene/*": ["../src/scene/*"],
-      "api/*": ["../src/utils/api/*"],
-      "utils/*": ["../src/utils/*"],
-      "entities/*": ["../src/entities/*"],
-      "styles/*": ["../src/styles/*"]
-    }
+    "typeRoots": ["../node_modules/@types"]
   },
   "exclude": ["../node_modules"],
   "include": ["./**/*.ts"]

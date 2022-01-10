@@ -36,3 +36,25 @@ export function getArrayOfRandomUniqueInt(min: number, max: number, length: numb
   }
   return arr;
 }
+
+/**
+ * СКРЫВАЕТ элемент DOM
+ * @param id ID элемента DOM
+ */
+export function hideElementById(id: string): void {
+  const elemClassList = document.getElementById(id)?.classList;
+  if (!elemClassList?.contains("hide")) {
+    elemClassList?.add("hide");
+  }
+}
+
+/**
+ * ПОКАЗЫВАЕТ элемент DOM
+ * @param id ID элемента DOM
+ */
+export function showElementById(id: string): void {
+  const elemClassList = document.getElementById(id)?.classList;
+  if (elemClassList?.contains("hide")) {
+    elemClassList.remove("hide");
+  }
+}

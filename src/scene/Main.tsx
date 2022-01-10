@@ -9,6 +9,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import RoverSelector from "components/custom/RoverSelector";
 import RoverNames from "entities/RoverNames";
@@ -19,6 +20,8 @@ import store from "store/index";
 import { useAppSelector } from "utils/hooks/useAppSelector";
 import manifestSetAction from "store/actions/manifest";
 import useAppDispatch from "utils/hooks/useAppDispatch";
+import { hideElementById, showElementById } from "utils/utils";
+import loaderAction from "store/actions/loader";
 
 function Copyright() {
   return (
@@ -52,11 +55,14 @@ const theme = createTheme({
 
 const Main: React.FC = () => {
   const manifest = useAppSelector((state) => state.manifest);
+  const loader = useAppSelector((state) => state.loader);
   const dispatch = useAppDispatch();
 
   const handleSelector = (roverName: string) => {
+    dispatch(loaderAction(true));
     getManifest(roverName).then((apiResp) => {
       dispatch(manifestSetAction(apiResp));
+      dispatch(loaderAction(false));
     });
   };
 
@@ -67,6 +73,14 @@ const Main: React.FC = () => {
       handleSelector(RoverNames[0]);
     }
   });
+
+  useEffect(() => {
+    if (loader.loading) {
+      showElementById("loader");
+    } else {
+      hideElementById("loader");
+    }
+  }, [loader]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -100,6 +114,7 @@ const Main: React.FC = () => {
             <ManifestInfo roverManifest={manifest} />
             <Stack sx={{ pt: 4 }} direction='row' spacing={2} justifyContent='center'>
               <RoverSelector options={RoverNames} onSelect={handleSelector} />
+              <CircularProgress id='loader' />
             </Stack>
           </Container>
         </Box>

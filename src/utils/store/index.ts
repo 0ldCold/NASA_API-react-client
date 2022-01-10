@@ -1,4 +1,5 @@
 import { AppInitialStateType } from "reducers/AppReducer/types";
+import LoaderReducer from "reducers/LoaderReducer";
 import ManifestReducer from "reducers/ManifestReducer";
 import { Action, applyMiddleware, combineReducers, createStore } from "redux";
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -8,7 +9,8 @@ import AppReducer from "./reducers/AppReducer";
 
 const allReducers = combineReducers({
   app: AppReducer,
-  manifest: ManifestReducer
+  manifest: ManifestReducer,
+  loader: LoaderReducer
 });
 
 export const loadState = (): RootState | undefined => {
