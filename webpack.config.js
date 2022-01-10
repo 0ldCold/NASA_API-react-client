@@ -29,7 +29,8 @@ module.exports = {
       image: path.resolve(__dirname, "assets/image/"),
       api: path.resolve(__dirname, "src/utils/api/"),
       utils: path.resolve(__dirname, "src/utils/"),
-      entities: path.resolve(__dirname, "src/entities/")
+      entities: path.resolve(__dirname, "src/entities/"),
+      reducers: path.resolve(__dirname, "src/utils/store/reducers/")
     },
     extensions: [".ts", ".tsx", ".js"]
   },

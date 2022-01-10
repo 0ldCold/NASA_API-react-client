@@ -11,14 +11,9 @@ const RoverSelector: FC<{
   const handleChange = (event: React.MouseEvent<HTMLElement>, newValue: string) => {
     if (newValue != null) {
       setSelectItem(newValue);
+      onSelect(newValue);
     }
   };
-
-  const memoOnSelect = useCallback(onSelect, [selectItem]);
-
-  useEffect(() => {
-    memoOnSelect(selectItem);
-  }, [memoOnSelect, selectItem]);
 
   return (
     <ToggleButtonGroup value={selectItem} exclusive onChange={handleChange}>

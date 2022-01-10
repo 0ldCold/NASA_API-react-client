@@ -5,8 +5,8 @@
   "homepage": "https://0ldcold.github.io/NASA_API-react-client/",
   "scripts": {
     "start": "webpack serve",
-    "prod": "NODE_ENV=production webpack serve --mode=production",
-    "build": "SET NODE_ENV=production webpack --mode=production",
+    "prod": "set NODE_ENV=production&& webpack serve --mode=production",
+    "build": "set NODE_ENV=production&& webpack --mode=production",
     "lint": "eslint src/**/*.ts{,x}",
     "prepare": "husky install",
     "prettier": "prettier --write .",
@@ -31,7 +31,7 @@
     "react-router-dom": "^5.2.0",
     "react-select": "^5.2.1",
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.4.1"
   },
   "devDependencies": {
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
