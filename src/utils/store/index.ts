@@ -1,4 +1,3 @@
-import Manifest from "entities/Manifest";
 import { AppInitialStateType } from "reducers/AppReducer/types";
 import ManifestReducer from "reducers/ManifestReducer";
 import { Action, applyMiddleware, combineReducers, createStore } from "redux";
@@ -11,10 +10,6 @@ const allReducers = combineReducers({
   app: AppReducer,
   manifest: ManifestReducer
 });
-export interface RootState {
-  app: AppInitialStateType;
-  manifest: Manifest;
-}
 
 export const loadState = (): RootState | undefined => {
   try {
@@ -44,6 +39,8 @@ const store = createStore(
   persistedState,
   composeWithDevTools(applyMiddleware(thunkMiddleware))
 );
+export type RootState = ReturnType<typeof allReducers>;
+export type AppDispatch = typeof store.dispatch;
 
 store.subscribe(() => {
   saveState({

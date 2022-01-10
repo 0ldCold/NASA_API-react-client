@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 import AppBar from "@mui/material/AppBar";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -18,6 +18,7 @@ import RandomPhoto from "components/custom/RandomPhoto";
 import store from "store/index";
 import { useAppSelector } from "utils/hooks/useAppSelector";
 import manifestSetAction from "store/actions/manifest";
+import useAppDispatch from "utils/hooks/useAppDispatch";
 
 function Copyright() {
   return (
@@ -50,12 +51,23 @@ const theme = createTheme({
 });
 
 const Main: React.FC = () => {
+  const manifest = useAppSelector((state) => state.manifest);
+  const dispatch = useAppDispatch();
+
   const handleSelector = (roverName: string) => {
     getManifest(roverName).then((apiResp) => {
-      store.dispatch(manifestSetAction(apiResp));
+      dispatch(manifestSetAction(apiResp));
     });
   };
-  const manifest = useAppSelector((state) => state.manifest);
+
+  const firstUpdate = useRef(true);
+  useEffect(() => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      handleSelector(RoverNames[0]);
+    }
+  });
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
